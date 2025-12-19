@@ -19,6 +19,12 @@ A sequence-sensitive model built upon the Striped Hyena2 architecture.<br>This r
 
 ## Model Architecture
 
+eScreen is a sequence-sensitive model built upon the Striped Hyena2 architecture, integrating:  
+
+  ▶ Short- and long-range convolution layers for multi-scale regulatory feature extraction  
+
+  ▶ An optional graph neural network (GNN) module that incorporates epigenetic context  
+  
 ## Command line interface
 
 ## License
@@ -34,4 +40,5 @@ Decoding the functional regulatory syntax at single-nucleotide resolution throug
 ## Contact
 
 For questions or support, please open an issue or contact us. Please don't hesitate to contact us if you have any questions or suggestions about eScreen:
-[21620241153548@stu.xmu.edu.cn](mailto:21620241153548@stu.xmu.edu.cn).
+<br>[21620241153548@stu.xmu.edu.cn](mailto:21620241153548@stu.xmu.edu.cn).
+<br>[sluo112211@163.com](mailto:sluo112211@163.com).
