@@ -1,12 +1,12 @@
 import os,subprocess
-import genome_tool
-import miaomiao_tool
-from motif_tool import load_pwm_from_meme_c,load_pwm_from_meme_c1,CenteredMaxPool1D
+from . import genome_tool
+from . import miaomiao_tool
+from .motif_tool import load_pwm_from_meme_c,load_pwm_from_meme_c1,CenteredMaxPool1D
 
-from vortex.main.ParallelGatedConvBlock import ParallelGatedConvBlock
-from vortex.main.AttentionBlock import AttentionBlock
-from vortex.main.RMSNorm import RMSNorm
-from vortex.main.HyenaInferenceEngine import fftconv_standard
+from .vortex.main.ParallelGatedConvBlock import ParallelGatedConvBlock
+from .vortex.main.AttentionBlock import AttentionBlock
+from .vortex.main.RMSNorm import RMSNorm
+from .vortex.main.HyenaInferenceEngine import fftconv_standard
 
 import numpy as np
 import pandas as pd

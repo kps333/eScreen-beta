@@ -14,15 +14,21 @@ A sequence-sensitive model built upon the Striped Hyena2 architecture.<br>This r
 ## Tutorials
 
 ## Data
+Preprocessed tutorial dataset is available at Google Drive
 
-## Installation
+## Setup
+### Requirements
+We recommend using our packaged setup script to create suitable environment:
 ```bash
 git clone https://github.com/kps333/eScreen-beta.git
 cd eScreen-beta
-
 bash setup.sh
 conda activate eScreen
-pip install .
+```
+### Installation
+Then, you can install eScreen with pip:
+```bash
+pip install -e .
 ```
 
 ## Model Architecture
