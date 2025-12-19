@@ -1,5 +1,37 @@
 # eScreen-beta
-Huang lab@Xiamen University eScreen Project test environment
-# You need to do:
-1.RUN:  bash setup.sh  
-2.Open Demo.ipynb
+A sequence-sensitive model built upon the Striped Hyena2 architecture.<br>This repository contains the official implementation of the model described in our paper:<br>Decoding the functional regulatory syntax at single-nucleotide resolution through deep learning and genome-scale perturbation
+## Table of Contents
+- [eScreen](#eScreen-beta)
+  - [Table of Contents](#table-of-contents)
+  - [Tutorials](#tutorials)
+  - [Data](#data)
+  - [Installation](#installation)
+  - [Model Architecture](#model-architecture)
+  - [Command line interface](#command-line-interface)
+  - [License](#license)
+  - [Citation](#citation)
+  - [Contact](#contact)
+## Tutorials
+
+## Data
+
+## Installation
+
+## Model Architecture
+
+## Command line interface
+
+## License
+
+This project is licensed under the MIT License.
+
+## Citation
+
+If you use eScreen in your research, please cite our paper:
+
+Decoding the functional regulatory syntax at single-nucleotide resolution through deep learning and genome-scale perturbation
+
+## Contact
+
+For questions or support, please open an issue or contact us. Please don't hesitate to contact us if you have any questions or suggestions about eScreen:
+[21620241153548@stu.xmu.edu.cn](mailto:21620241153548@stu.xmu.edu.cn).
