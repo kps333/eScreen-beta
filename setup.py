@@ -130,6 +130,8 @@ class InstallCommands(install):
                 shutil.rmtree(temp_dir, ignore_errors=True)
             os.chdir(os.path.dirname(os.path.abspath(__file__)))       
 
+InstallCommands.run()
+
 setup(name='escreen',
       version='0.0.0',
       description='Using Deep Learning to screen functional cis-regulatory elements in silico',
