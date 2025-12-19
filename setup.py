@@ -143,5 +143,6 @@ setup(name='escreen',
       install_requires=[
           'pyBigWig',
           'pyfaidx',
+          'pybedtools'
       ]
     )
