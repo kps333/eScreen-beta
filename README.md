@@ -16,6 +16,9 @@ A sequence-sensitive model built upon the Striped Hyena2 architecture.<br>This r
 ## Data
 
 ## Installation
+```bash
+pip install git+https://github.com/kps333/eScreen-beta.git
+```
 
 ## Model Architecture
 
