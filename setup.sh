@@ -11,9 +11,9 @@ micromamba install -n eScreen -c nvidia cuda-nvcc cuda-cudart-dev -y
 micromamba run -n eScreen bash -c '
     mkdir flash-attn
     cd flash-attn
-    wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.3/flash_attn-2.7.3+cu11torch2.6cxx11abiTRUE-cp310-cp310-linux_x86_64.whl
+    wget https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.3/flash_attn-2.7.3+cu11torch2.6cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
     cd ..
-    pip install ./flash-attn/flash_attn-2.7.3+cu11torch2.6cxx11abiTRUE-cp310-cp310-linux_x86_64.whl --no-build-isolation --no-deps
+    pip install ./flash-attn/flash_attn-2.7.3+cu11torch2.6cxx11abiFALSE-cp310-cp310-linux_x86_64.whl --no-build-isolation --no-deps
     pip install ./flash-fft-conv/flashfftconv-0.0.0-py3-none-any.whl
     pip install ./flash-fft-conv/monarch_cuda-0.0.0-cp310-cp310-linux_x86_64.whl
     python -m ipykernel install --user --name eScreen

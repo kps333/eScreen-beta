@@ -1,5 +1,6 @@
 # eScreen-beta
 A sequence-sensitive model built upon the Striped Hyena2 architecture.<br>This repository contains the official implementation of the model described in our paper:<br>Decoding the functional regulatory syntax at single-nucleotide resolution through deep learning and genome-scale perturbation
+
 ## Table of Contents
 - [eScreen](#eScreen-beta)
   - [Table of Contents](#table-of-contents)
@@ -7,14 +8,16 @@ A sequence-sensitive model built upon the Striped Hyena2 architecture.<br>This r
   - [Data](#data)
   - [Installation](#installation)
   - [Model Architecture](#model-architecture)
-  - [Command line interface](#command-line-interface)
   - [License](#license)
   - [Citation](#citation)
   - [Contact](#contact)
+
+
 ## Tutorials
+[Train & Evaluation] (https://github.com/kps333/eScreen-beta/blob/main/tutorials/Demo.ipynb)
 
 ## Data
-Preprocessed tutorial dataset is available at Google Drive
+Preprocessed tutorial dataset is available at Google Drive：https://drive.google.com/file/d/1ggN4Go3H5X0QWF2RzxznTVIda0bQ3fgC/view?usp=drive_link
 
 ## Setup
 ### Requirements
@@ -35,11 +38,9 @@ pip install -e .
 
 eScreen is a sequence-sensitive model built upon the Striped Hyena2 architecture, integrating:  
 
-  ▶ Short- and long-range convolution layers for multi-scale regulatory feature extraction  
+  ☛ Short- and long-range convolution layers for multi-scale regulatory feature extraction  
 
-  ▶ An optional graph neural network (GNN) module that incorporates epigenetic context  
-  
-## Command line interface
+  ☛ An optional graph neural network (GNN) module that incorporates epigenetic context  
 
 ## License
 
