@@ -200,3 +200,80 @@ class eScreen(nn.Module):
         x = self.header(x).flatten()
         x = nn.functional.sigmoid(x)    
         return torch.clip(x,0,1)
+    
+    def fit(self,train_loader,valid_loader=None,epochs=200,lr=1e-5,check_step=100,earlystop=20,device='cpu',save_name='./torch_logs/best_model'):
+        
+        optimizer = torch.optim.Adam(self.parameters(),lr=lr)
+        self.device = device
+        best_valid_acc = 0.0; count = 0; best_model = None; valid_count = 0
+        batch_size = train_loader.batch_size
+        for epoch in range(epochs):
+            epoch_loss = 0
+            for i, batch in enumerate(train_loader):
+                x,y,z = batch;x = x.to(device);y = y.to(device);z = z.to(device)
+                self.move();self.train()
+                optimizer.zero_grad()
+
+                p = self(x,z)
+
+                loss = F.binary_cross_entropy(p,y)
+                #loss = F.mse_loss(p,y)
+                loss.backward()
+                optimizer.step()
+                
+                epoch_loss += loss.item()
+                
+                avg_loss = epoch_loss / (i+1)
+                print(f"Step/Epoch [{(i+1)*batch_size}/{epoch+1}], Loss: {avg_loss:.4f}",end='\r')
+                
+                valid_count += 1
+                if valid_count >= check_step:
+                    if not valid_loader is None:
+                        p,y = self.predict(valid_loader,device=device,verbose=True,with_true=True)
+                        valid_acc    = spearmanr(p,y)[0]
+                        if valid_acc > best_valid_acc:
+                            best_valid_acc = valid_acc
+                            count          = 0
+                            torch.save(self.state_dict(),save_name+'.best.pt')
+                            print(f"Epoch [{epoch+1}], Loss: {avg_loss:.4f}, Val-acc: {valid_acc:.4f} ↑",end='\n')
+                        else:
+                            count += 1
+                            print(f"Epoch [{epoch+1}], Loss: {avg_loss:.4f}, Val-acc: {valid_acc:.4f} -",end='\n')
+                            if count > earlystop:
+                                print(f'Model early stop in Epoch {epoch+1} with valid Acc {best_valid_acc:.4f}')
+                                self.load_state_dict(torch.load(save_name+'.best.pt'))
+                                break
+                        valid_count = 0
+                    else:
+                        print("")
+                        valid_count = 0
+        torch.save(self.state_dict(),save_name+'.final.pt')
+        return None
+    
+    def predict(self,data_loader,device='cpu',verbose=True,with_true=False):
+        y_pred=[];y_true=[];self.eval();self.device=device;self.move()
+        with torch.no_grad():
+            if verbose:
+                for batch in tqdm(data_loader, leave=True):
+                    if with_true:
+                        x,y,z = batch;x = x.to(device);y = y.to(device);z = z.to(device)
+                        preds = self.forward(x,z)
+                        y_pred.extend(preds.cpu().numpy())
+                        y_true.extend(y.cpu().numpy())
+                    else:
+                        x,y,z = batch;x = x.to(device);z = z.to(device)
+                        preds = self.forward(x,z)
+                        y_pred.extend(preds.cpu().numpy())
+            else:
+                for batch in data_loader:
+                    if with_true:
+                        x,y,z = batch;x = x.to(device);y = y.to(device);z = z.to(device)
+                        preds = self.forward(x,z)
+                        y_pred.extend(preds.cpu().numpy())
+                        y_true.extend(y.cpu().numpy())
+                    else:
+                        x,y,z = batch;x = x.to(device);z = z.to(device)
+                        preds = self.forward(x,z)
+                        y_pred.extend(preds.cpu().numpy()) 
+                    
+        return np.array(y_pred),np.array(y_true)
