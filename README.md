@@ -14,8 +14,8 @@ A sequence-sensitive model built upon the Striped Hyena2 architecture.<br>This r
 
 
 ## Tutorials
-[Train & Evaluation] (https://github.com/kps333/eScreen-beta/blob/main/Tutorial/Demo.ipynb)
-[Train & Evaluation]
+[Train & Evaluation] (https://github.com/kps333/eScreen-beta/blob/main/Tutorial/Demo.ipynb)<br>
+[Analysis]
 
 ## Data
 Preprocessed tutorial dataset is available at Google Drive：https://drive.google.com/file/d/1ggN4Go3H5X0QWF2RzxznTVIda0bQ3fgC/view?usp=drive_link
