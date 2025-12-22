@@ -25,7 +25,7 @@ A sequence-sensitive model built upon the Striped Hyena2 architecture.<br>This r
 ## Tutorials
 | Name | Description |
 |-----------------|-------------|
-|[Train & Evaluation](https://github.com/kps333/eScreen-beta/blob/main/Tutorial/Demo.ipynb)|A detailed tutorial on how to Train `Scouter` and use it to predict the activity of regulatory elements|
+|[Demo.ipynb](https://github.com/kps333/eScreen-beta/blob/main/Tutorial/Demo.ipynb)|A detailed tutorial on how to Train `Scouter` and use it to predict the activity of regulatory elements|
 |Analysis|Cooming Soon...|
 
 ## Data
