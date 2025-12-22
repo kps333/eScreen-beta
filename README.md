@@ -1,4 +1,4 @@
-<p align="center">
+<p align="flex">
   <img src="https://github.com/kps333/eScreen-beta/blob/main/img/lab_logo.png" height="100" title="lab_logo">
   <img src="https://github.com/kps333/eScreen-beta/blob/main/img/eScreen_logo.png" height="100" title="project_logo">
 </p>
