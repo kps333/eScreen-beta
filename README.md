@@ -1,11 +1,11 @@
 <p align="center">
-  <img src="https://github.com/kps333/eScreen-beta/blob/main/img/eScreen_logo.png" width="100" title="logo">
+  <img src="https://github.com/kps333/eScreen-beta/blob/main/img/eScreen_logo.png" width="400" title="logo">
 </p>
 # eScreen-beta
 A sequence-sensitive model built upon the Striped Hyena2 architecture.<br>This repository contains the official implementation of the model described in our paper:<br>Decoding the functional regulatory syntax at single-nucleotide resolution through deep learning and genome-scale perturbation
 <br>For more details read our manuscript.
 <p align="center">
-  <img src="https://github.com/kps333/eScreen-beta/blob/main/img/Schema.png" width="100" title="logo">
+  <img src="https://github.com/kps333/eScreen-beta/blob/main/img/Schema.png" width="800" title="logo">
 </p>
 
 ## Table of Contents
