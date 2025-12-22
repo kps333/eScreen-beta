@@ -6,14 +6,12 @@
 # eScreen-beta
 A sequence-sensitive model built upon the Striped Hyena2 architecture.<br>This repository contains the official implementation of the model described in our paper:<br>Decoding the functional regulatory syntax at single-nucleotide resolution through deep learning and genome-scale perturbation
 <br>For more details read our manuscript.
-<p align="center">
-  <img src="https://github.com/kps333/eScreen-beta/blob/main/img/Schema.png" width="800" title="logo">
-</p>
 
 ## Table of Contents
 - [eScreen](#eScreen-beta)
   - [Table of Contents](#table-of-contents)
-  - [Tutorials](#tutorials)
+  - [Quick Start](#quick-start)
+  - [Detail Tutorials](#tutorials)
   - [Data](#data)
   - [Installation](#installation)
   - [Model Architecture](#model-architecture)
@@ -21,12 +19,32 @@ A sequence-sensitive model built upon the Striped Hyena2 architecture.<br>This r
   - [Citation](#citation)
   - [Contact](#contact)
 
+## Quick Start
+### Load demo dataset
+```python
+
+```
+### Train `eScreen`
+```python
+
+```
+
+### Prediction and Evaluation
+```python
+
+```
+
+### Tling Prediction
+```python
+
+```
 
 ## Tutorials
 | Name | Description |
 |-----------------|-------------|
-|[Demo.ipynb](https://github.com/kps333/eScreen-beta/blob/main/Tutorial/Demo.ipynb)|A detailed tutorial on how to Train `Scouter` and use it to predict the activity of regulatory elements|
+|[Demo.ipynb](https://github.com/kps333/eScreen-beta/blob/main/Tutorial/Demo.ipynb)|A detailed tutorial on how to Train `eScreen` and use it to predict the activity of regulatory elements|
 |Analysis|Cooming Soon...|
+|||
 
 ## Data
 Preprocessed tutorial dataset is available at Google Drive：https://drive.google.com/file/d/1ggN4Go3H5X0QWF2RzxznTVIda0bQ3fgC/view?usp=drive_link
@@ -53,6 +71,10 @@ eScreen is a sequence-sensitive model built upon the Striped Hyena2 architecture
   ☛ Short- and long-range convolution layers for multi-scale regulatory feature extraction  
 
   ☛ An optional graph neural network (GNN) module that incorporates epigenetic context  
+
+<p align="center">
+  <img src="https://github.com/kps333/eScreen-beta/blob/main/img/Schema.png" width="800" title="logo">
+</p>
 
 ## License
 
