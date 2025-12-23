@@ -5,10 +5,10 @@
 
 # eScreen-beta
 eScreen is a sequence-sensitive model built upon the Striped Hyena2 architecture designed to learn interpretable regulatory context model from CRISPR perturbation experiment. Using the results of CRISPR perturbation experiment analysis and information about transcriptional factor motif, eScreen learns functional regulatory syntax and predicts regulatory activity of cis-regulatory elements.
-<p align="center">
+<p align="center" style="margin-bottom: 0px;">
   <img src="https://github.com/kps333/eScreen-beta/blob/main/img/Schema_0.png" width="400" title="logo">
 </p>
-<p align="center">
+<p align="center" style="margin-top: 0px;">
   <img src="https://github.com/kps333/eScreen-beta/blob/main/img/Schema_1.png" width="400" title="logo">
 </p>
 <br>This repository contains the official implementation of the model described in our paper:<br>Decoding the functional regulatory syntax at single-nucleotide resolution through deep learning and genome-scale perturbation.
@@ -19,7 +19,7 @@ eScreen is a sequence-sensitive model built upon the Striped Hyena2 architecture
 - [eScreen](#eScreen-beta)
   - [Table of Contents](#table-of-contents)
   - [Quick Start](#quick-start)
-  - [Detail Tutorials](#tutorials)
+  - [Detail Demo](#Demo)
   - [Data](#data)
   - [Installation](#installation)
   - [Model Architecture](#model-architecture)
@@ -122,12 +122,11 @@ p,y = model.predict(valid_loader,device='cuda',verbose=True,with_true=True)
 ```
 As you run 
 
-## Tutorials
+## Demo
 | Name | Description |
 |-----------------|-------------|
 |[Demo.ipynb](https://github.com/kps333/eScreen-beta/blob/main/Tutorial/Demo.ipynb)|A detailed tutorial on how to Train `eScreen` and use it to predict the activity of regulatory elements|
-|[Motifs.ipynb]|Cooming Soon...|
-|[]||
+|[Analysis.ipynb](https://github.com/kps333/eScreen-beta/blob/main/Analysis/Analysis.ipynb)|A demo on how to reproducc some results in our paper|
 
 ## Data
 All demo used data can be gain in this repository. Model weights is available at Google Drive：xxxx
