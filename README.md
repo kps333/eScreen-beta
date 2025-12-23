@@ -34,7 +34,7 @@ A sequence-sensitive model built upon the Striped Hyena2 architecture.<br>This r
 
 ```
 
-### Tling Prediction
+### Tiling Prediction
 ```python
 
 ```
