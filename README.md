@@ -11,8 +11,8 @@ eScreen is a sequence-sensitive model built upon the Striped Hyena2 architecture
 <p align="center" style="margin-top: 0px;">
   <img src="https://github.com/kps333/eScreen-beta/blob/main/img/Schema_1.png" width="400" title="logo">
 </p>
-<br>This repository contains the official implementation of the model described in our paper:<br>Decoding the functional regulatory syntax at single-nucleotide resolution through deep learning and genome-scale perturbation.
-<br><br>
+
+This repository contains the official implementation of the model described in our paper:<br>Decoding the functional regulatory syntax at single-nucleotide resolution through deep learning and genome-scale perturbation.
 For more details read our manuscript or access our [web site](https://escreen.huanglabxmu.com).
 
 ## Table of Contents
