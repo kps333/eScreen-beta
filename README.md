@@ -6,7 +6,7 @@
 # eScreen-beta
 eScreen is a sequence-sensitive model built upon the Striped Hyena2 architecture designed to learn interpretable regulatory context model from CRISPR perturbation experiment. Using the results of CRISPR perturbation experiment analysis and information about transcriptional factor motif, eScreen learns functional regulatory syntax and predicts regulatory activity of cis-regulatory elements.
 <br>This repository contains the official implementation of the model described in our paper:<br>Decoding the functional regulatory syntax at single-nucleotide resolution through deep learning and genome-scale perturbation.
-<br>For more details read our manuscript or access our [web site](escreen.huanglabxmu.com).
+<br>For more details read our manuscript or access our [web site](https://escreen.huanglabxmu.com).
 
 ## Table of Contents
 - [eScreen](#eScreen-beta)
@@ -66,8 +66,8 @@ motifs_f, motifs_r, motif_names, motif_length = escreen.motif_tool.load_pwm_from
 seed = 114514
 torch.manual_seed(seed)
 torch.cuda.manual_seed_all(seed)
-torch.backends.cudnn.deterministic = True  # 禁用cudnn非确定性算法
-torch.backends.cudnn.benchmark = False     # 关闭自动寻找最优卷积算法
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.benchmark = False
 kernel_fwd  = torch.tensor(motifs_f,dtype=torch.float)
 kernel_rev  = torch.tensor(motifs_r,dtype=torch.float)
 d_in = None
@@ -97,8 +97,8 @@ motifs_f, motifs_r, motif_names, motif_length = escreen.motif_tool.load_pwm_from
 seed = 114514
 torch.manual_seed(seed)
 torch.cuda.manual_seed_all(seed)
-torch.backends.cudnn.deterministic = True  # 禁用cudnn非确定性算法
-torch.backends.cudnn.benchmark = False     # 关闭自动寻找最优卷积算法
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.benchmark = False
 kernel_fwd  = torch.tensor(motifs_f,dtype=torch.float)
 kernel_rev  = torch.tensor(motifs_r,dtype=torch.float)
 d_in = None
