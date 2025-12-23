@@ -22,16 +22,95 @@ A sequence-sensitive model built upon the Striped Hyena2 architecture.<br>This r
 ## Quick Start
 ### Load demo dataset
 ```python
+import escreen
+import pickle,json
+from tqdm import tqdm
+from torch.utils.data import Dataset, DataLoader
 
+with open('../data/celltype.dict','rb') as file:
+    cell_type_dict = json.load(file)
+
+with open('../data/demo_dataset.pkl','rb') as file:
+    Demo_Dataset = pickle.load(file)
+    
+trainset = Demo_Dataset['Trainset'].reset_index(drop=True)
+testset  = Demo_Dataset['Testset'].reset_index(drop=True)
+validset = Demo_Dataset['Validset'].reset_index(drop=True)
+
+trainset['one hot'] = None
+for i,row in tqdm(trainset.iterrows(),total=len(trainset)):
+    trainset.at[i,'one hot'] = escreen.genome_tool.one_hot(row['sequence'])
+testset['one hot'] = None
+for i,row in tqdm(testset.iterrows(),total=len(testset)):
+    testset.at[i,'one hot']  = escreen.genome_tool.one_hot(row['sequence'])
+validset['one hot'] = None
+for i,row in tqdm(validset.iterrows(),total=len(validset)):
+    validset.at[i,'one hot'] = escreen.genome_tool.one_hot(row['sequence'])
+
+train_ds = escreen.SequenceDataset(trainset, cell_type_dict, z_col_name='cell_line')
+test_ds  = escreen.SequenceDataset(testset , cell_type_dict, z_col_name='cell_line')
+valid_ds = escreen.SequenceDataset(validset, cell_type_dict, z_col_name='cell_line')
+
+train_loader = DataLoader(train_ds , batch_size=32)
+test_loader  = DataLoader(test_ds  , batch_size=32)
+valid_loader = DataLoader(valid_ds , batch_size=32)
 ```
 ### Train `eScreen`
 ```python
+import torch
 
+motifs_f, motifs_r, motif_names, motif_length = escreen.motif_tool.load_pwm_from_meme_c(
+    "/cluster2/huanglab/liquan/motif/consensus_pwms.meme", max_length=35
+)
+seed = 114514
+torch.manual_seed(seed)
+torch.cuda.manual_seed_all(seed)
+torch.backends.cudnn.deterministic = True  # 禁用cudnn非确定性算法
+torch.backends.cudnn.benchmark = False     # 关闭自动寻找最优卷积算法
+kernel_fwd  = torch.tensor(motifs_f,dtype=torch.float)
+kernel_rev  = torch.tensor(motifs_r,dtype=torch.float)
+d_in = None
+d_model = 512
+num_filters = 512
+
+model = escreen.eScreen(
+    kernel_fwd = kernel_fwd,
+    kernel_rev = kernel_rev,
+    d_model=d_model,
+    num_filters=num_filters,
+    seq_length=500,
+    celltype_num=32,
+    lr=1e-5,
+    device='cuda',
+)
+
+torch.cuda.empty_cache()
+model.fit(train_loader,valid_loader=test_loader,epochs=50,lr=1e-4,check_step=500,earlystop=10,device='cuda',save_name='./eScreen_model')
 ```
 
 ### Prediction and Evaluation
 ```python
+motifs_f, motifs_r, motif_names, motif_length = escreen.motif_tool.load_pwm_from_meme_c(
+    "/cluster2/huanglab/liquan/motif/consensus_pwms.meme", max_length=35
+)
+seed = 114514
+torch.manual_seed(seed)
+torch.cuda.manual_seed_all(seed)
+torch.backends.cudnn.deterministic = True  # 禁用cudnn非确定性算法
+torch.backends.cudnn.benchmark = False     # 关闭自动寻找最优卷积算法
+kernel_fwd  = torch.tensor(motifs_f,dtype=torch.float)
+kernel_rev  = torch.tensor(motifs_r,dtype=torch.float)
+d_in = None
+d_model = 512
+num_filters = 512
 
+model = escreen.eScreen(
+    kernel_fwd = kernel_fwd,kernel_rev = kernel_rev,d_model=d_model,
+    num_filters=num_filters,seq_length=500,celltype_num=32,lr=1e-5,device='cuda:0',
+)
+
+model.load_state_dict( torch.load('./eScreen_model.best.pt',map_location='cuda:0') )
+p,y = model.predict(valid_loader,device='cuda:0',verbose=True,with_true=True)
 ```
 
 ### Tiling Prediction
@@ -43,8 +122,8 @@ A sequence-sensitive model built upon the Striped Hyena2 architecture.<br>This r
 | Name | Description |
 |-----------------|-------------|
 |[Demo.ipynb](https://github.com/kps333/eScreen-beta/blob/main/Tutorial/Demo.ipynb)|A detailed tutorial on how to Train `eScreen` and use it to predict the activity of regulatory elements|
-|Analysis|Cooming Soon...|
-|||
+|[]|Cooming Soon...|
+|[]||
 
 ## Data
 Preprocessed tutorial dataset is available at Google Drive：https://drive.google.com/file/d/1ggN4Go3H5X0QWF2RzxznTVIda0bQ3fgC/view?usp=drive_link
