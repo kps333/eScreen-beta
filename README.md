@@ -4,8 +4,9 @@
 </p>
 
 # eScreen-beta
-A sequence-sensitive model built upon the Striped Hyena2 architecture.<br>This repository contains the official implementation of the model described in our paper:<br>Decoding the functional regulatory syntax at single-nucleotide resolution through deep learning and genome-scale perturbation
-<br>For more details read our manuscript.
+eScreen is a sequence-sensitive model built upon the Striped Hyena2 architecture designed to learn interpretable regulatory context model from CRISPR perturbation experiment. Using the results of CRISPR perturbation experiment analysis and information about transcriptional factor motif, eScreen learns functional regulatory syntax and predicts regulatory activity of cis-regulatory elements.
+<br>This repository contains the official implementation of the model described in our paper:<br>Decoding the functional regulatory syntax at single-nucleotide resolution through deep learning and genome-scale perturbation.
+<br>For more details read our manuscript or access our [web site](escreen.huanglabxmu.com).
 
 ## Table of Contents
 - [eScreen](#eScreen-beta)
@@ -60,7 +61,7 @@ valid_loader = DataLoader(valid_ds , batch_size=32)
 import torch
 
 motifs_f, motifs_r, motif_names, motif_length = escreen.motif_tool.load_pwm_from_meme_c(
-    "/cluster2/huanglab/liquan/motif/consensus_pwms.meme", max_length=35
+    "../data/Vierstra637motifs.meme", max_length=35
 )
 seed = 114514
 torch.manual_seed(seed)
@@ -88,10 +89,10 @@ torch.cuda.empty_cache()
 model.fit(train_loader,valid_loader=test_loader,epochs=50,lr=1e-4,check_step=500,earlystop=10,device='cuda',save_name='./eScreen_model')
 ```
 
-### Prediction and Evaluation
+### Prediction
 ```python
 motifs_f, motifs_r, motif_names, motif_length = escreen.motif_tool.load_pwm_from_meme_c(
-    "/cluster2/huanglab/liquan/motif/consensus_pwms.meme", max_length=35
+    "../data/Vierstra637motifs.meme", max_length=35
 )
 seed = 114514
 torch.manual_seed(seed)
@@ -106,27 +107,23 @@ num_filters = 512
 
 model = escreen.eScreen(
     kernel_fwd = kernel_fwd,kernel_rev = kernel_rev,d_model=d_model,
-    num_filters=num_filters,seq_length=500,celltype_num=32,lr=1e-5,device='cuda:0',
+    num_filters=num_filters,seq_length=500,celltype_num=32,lr=1e-5,device='cuda',
 )
 
-model.load_state_dict( torch.load('./eScreen_model.best.pt',map_location='cuda:0') )
-p,y = model.predict(valid_loader,device='cuda:0',verbose=True,with_true=True)
+model.load_state_dict( torch.load('./eScreen_model.best.pt',map_location='cuda') )
+p,y = model.predict(valid_loader,device='cuda',verbose=True,with_true=True)
 ```
-
-### Tiling Prediction
-```python
-
-```
+As you run 
 
 ## Tutorials
 | Name | Description |
 |-----------------|-------------|
 |[Demo.ipynb](https://github.com/kps333/eScreen-beta/blob/main/Tutorial/Demo.ipynb)|A detailed tutorial on how to Train `eScreen` and use it to predict the activity of regulatory elements|
-|[]|Cooming Soon...|
+|[Motifs.ipynb]|Cooming Soon...|
 |[]||
 
 ## Data
-Preprocessed tutorial dataset is available at Google Drive：https://drive.google.com/file/d/1ggN4Go3H5X0QWF2RzxznTVIda0bQ3fgC/view?usp=drive_link
+All demo used data can be gain in this repository. Model weights is available at Google Drive：xxxx
 
 ## Setup
 ### Requirements
