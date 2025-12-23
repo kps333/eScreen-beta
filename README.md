@@ -119,8 +119,7 @@ model = escreen.eScreen(
 
 model.load_state_dict( torch.load('./eScreen_model.best.pt',map_location='cuda') )
 p,y = model.predict(valid_loader,device='cuda',verbose=True,with_true=True)
-```
-As you run 
+``` 
 
 ## Demo
 | Name | Description |
