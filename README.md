@@ -5,7 +5,9 @@
 
 # eScreen-beta
 eScreen is a sequence-sensitive model built upon the Striped Hyena2 architecture designed to learn interpretable regulatory context model from CRISPR perturbation experiment. Using the results of CRISPR perturbation experiment analysis and information about transcriptional factor motif, eScreen learns functional regulatory syntax and predicts regulatory activity of cis-regulatory elements.
+<br>
 <br>This repository contains the official implementation of the model described in our paper:<br>Decoding the functional regulatory syntax at single-nucleotide resolution through deep learning and genome-scale perturbation.
+<br>
 <br>For more details read our manuscript or access our [web site](https://escreen.huanglabxmu.com).
 
 ## Table of Contents
@@ -56,7 +58,7 @@ train_loader = DataLoader(train_ds , batch_size=32)
 test_loader  = DataLoader(test_ds  , batch_size=32)
 valid_loader = DataLoader(valid_ds , batch_size=32)
 ```
-### Train `eScreen`
+### Train
 ```python
 import torch
 
